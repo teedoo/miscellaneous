@@ -1,29 +1,27 @@
 #!/bin/bash
-echo $1
-# bourne shell could only address up to 9 positional parameters
-# $10 will be parsed as $1 followed by '0'
-# use ${15} curly bracket
+#: Description : print formatted sales report
 
-# `shift` command will discard $0, and $1 becomes $0, $2 becomes $1, and so on
+## Build a long string of equals signs
+divider=====================================
+divider=$divider$divider
 
+## Format strings for printf
+header="\n %-10s %11s %8s %10s\n"
+format=" %-10s %11.2f %8d %10.2f\n"
 
-# $* ----> all positional parameters
-# $# ----> the number of postional parameters
-# $0 ----> command itself
-# $$ ----> PID of current process
-# $? ----> the exit code of last-executed command
-# $_ ----> last argument to the command
-# $! ----> PID of the last command executed in the background
-# $- ----> option flags currently in effect
+## Width of divider
+totalwidth=44
 
+## Print categories
+printf "$header" ITEM  "PER UNIT" NUM TOTAL
 
-# variable
-# name=VALUE no space before or after =
+## Print divider to match width of report
+printf "%44.44s\n" "$divider"
 
-
-# command arguments
-# 
-
-echo $$
+## Print lines of report
+printf "$format" \
+    Chair 79.95 4 319.8 \
+   Table  209.99 1 209.99 \
+   Armchair 315.49 2 630.98
 
 
